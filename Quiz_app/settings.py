@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=#768g8ln&1lj%ncw)dln41q3rau7g2)@tt+@84tpd#&1mpx1w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['quizzack.herokuapp.com', '127.0.0.1']
 
