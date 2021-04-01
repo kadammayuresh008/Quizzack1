@@ -41,19 +41,19 @@ $ python manage.py runserver
 
 <p float="left">
 <img src="./Snapshots/snap1.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap2.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap3.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap4.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap5.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap6.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap7.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap9.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap11.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap12.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap13.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap14.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap15.PNG" width=400px/>
-<img src="./Quiz_app/Snapshots/snap16.PNG" width=400px/>
+<img src="./Snapshots/snap2.PNG" width=400px/>
+<img src="./Snapshots/snap3.PNG" width=400px/>
+<img src="./Snapshots/snap4.PNG" width=400px/>
+<img src="./Snapshots/snap5.PNG" width=400px/>
+<img src="./Snapshots/snap6.PNG" width=400px/>
+<img src="./Snapshots/snap7.PNG" width=400px/>
+<img src="./Snapshots/snap9.PNG" width=400px/>
+<img src="./Snapshots/snap11.PNG" width=400px/>
+<img src="./Snapshots/snap12.PNG" width=400px/>
+<img src="./Snapshots/snap13.PNG" width=400px/>
+<img src="./Snapshots/snap14.PNG" width=400px/>
+<img src="./Snapshots/snap15.PNG" width=400px/>
+<img src="./Snapshots/snap16.PNG" width=400px/>
 </p>
 
 ### Show some :heart: and star the repo to support the project and feel free to fix bugs
