@@ -40,7 +40,7 @@ $ python manage.py runserver
  ### Quizzack Screenshots
 
 <p float="left">
-<img src="./Quiz_app/Snapshots/snap1.PNG" width=400px/>
+<img src="./Snapshots/snap1.PNG" width=400px/>
 <img src="./Quiz_app/Snapshots/snap2.PNG" width=400px/>
 <img src="./Quiz_app/Snapshots/snap3.PNG" width=400px/>
 <img src="./Quiz_app/Snapshots/snap4.PNG" width=400px/>
