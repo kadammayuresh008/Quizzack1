@@ -10,7 +10,8 @@ quizList=[]
 testId=0
 
 def home(request):
-	return render(request,'blog/home.html')
+	return HttpResponse("<h1>In home</h1>")
+	# return render(request,'blog/home.html')
 
 @login_required
 def about(request):
