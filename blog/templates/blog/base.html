@@ -1,0 +1,97 @@
+	{% load static %}
+  <!DOCTYPE html>
+	<html>
+	<head>
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{% static 'blog/main2.css' %}">
+			{%if title%}
+				<title>Quizzack-{{title}}</title>
+			{%else%}
+				<title>Quizzack</title>
+			{% endif %}
+	</head>
+  <body>
+    <script>
+      var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.style.height="250px"
+    output.style.width="300px"
+    output.style.border="thin solid black"
+    output.style.borderRadius="1em"
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+    
+    </script>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-info sticky-top">
+      <div>
+      <h3><a class="navbar-nav nav-link text-light" style="font-family:Dancing Script" href="{% url 'blog.home'%}">Quizzack<span class="sr-only">(current)</span></a></h3>
+    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          {% if user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'blog.quiz_catlog'%}">Quiz</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'blog.questionUpload'%}">Add question</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'blog.quiz_upload_cat'%}">Add quiz</a>
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+        {% if user.is_authenticated %}
+        <li class="nav-item active">
+          <a href="{% url 'profile' %}" class="nav-link" rel="stylesheet">Profile</a>
+        </li>
+          <li class="nav-item active">
+          <a href="{% url 'logout' %}" class="nav-link" rel="stylesheet">LogOut</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a href="{% url 'login' %}" class="nav-link" rel="stylesheet">LogIn </a>
+        </li>
+          <li class="nav-item active">
+          <a href="{% url 'register'%}"  class="nav-link" rel="stylesheet">Register</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    </nav>
+	<div class="col-sm-12">
+    {% if messages %}
+    {% for message in messages%}
+    <div class="alert alert-{{message.tags}}">
+      {{ message }}
+    </div>
+    {% endfor%}
+    {% endif %}
+		{% block content %}
+		{% endblock %}
+  </div>
+  <div class="py-3"></div>
+  <div class="col-sm-12" style="bottom:0;">
+    <footer class="bg-info row" style="justify-content: space-evenly;">
+      <p  style="color:white;"> Copyright © 2020-21 Quizzack, Inc </p>
+      <!-- <p  style="color:white;"> Email : quizzyteam@gmail.com </p>
+      <p style="color:white;"> Telephone No : 2522621715</p> -->
+      <p  style="color:white;"> Developed by Mayuresh Kadam </p>
+      </footer>
+  </div>
+  </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</html>
