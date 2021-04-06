@@ -7,6 +7,16 @@ class UserRegisterForm(UserCreationForm):
 	email = forms.EmailField()
 	Address=forms.CharField(max_length=100)
 	Institution=forms.CharField(max_length=100)
+	# def clean_user(self):
+	# 	email = forms.EmailField()
+	# 	Address=forms.CharField(max_length=100)
+	# 	Institution=forms.CharField(max_length=100)
+	# 	try:
+	# 		User._default_manager.get(email=email)
+	# 	except User.DoesNotExist:
+	# 		return email
+	#     raise forms.ValidationError(self.error_messages['duplicate_username'])
+
 
 	class Meta:
 		model = User
