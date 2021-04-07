@@ -28,10 +28,11 @@ $ cd Quizzack
 ```
 Activating virtualenv and Starting the project
 ```sh
+$ cd ENV
 $ cd Scripts
 $ activate
 $ cd..
-$ cd Quiz_app
+$ cd..
 $ python manage.py 
 $ python manage.py migrate
 $ python manage.py runserver
