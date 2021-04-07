@@ -49,7 +49,7 @@
 
 function Set(){
 let question=document.getElementById("demo1").value;
-var  testtime=question*60*1000;
+var  testtime=question*10*1000;
 var presentTime=new  Date().getTime()
 window.countDownDate = new Date().getTime()+testtime;
 console.log(countDownDate);
@@ -88,9 +88,10 @@ var x = setInterval(function() {
   }
     
   // If the count down is over, write some text 
-  if (distance < 0) {
+  if (distance <= 0) {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    document.getElementById("demo").innerHTML = "Time ended";
+    document.quiz_form.submit();
   }
 }, 1000);
     </script>
