@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.utils import timezone
 
 
 class quiz(models.Model):
@@ -29,7 +30,7 @@ class Attempts(models.Model):
 	attemptedQue = models.IntegerField(default= 0)
 	correct = models.IntegerField(default= 0)
 	accuracy = models.IntegerField(default= 0)
-	attemptedtime = models.DateTimeField(default=datetime.now())
+	attemptedtime = models.DateTimeField(auto_now_add=True)
 	
 	def __str__(self):
 		return str(self.attemptId)
