@@ -100,6 +100,7 @@ def questionUpload(request):
 
 @login_required
 def Uploaded(request):
+	global testId
 	if(request.method=="POST"):
 		Question=request.POST.get("Question")
 		Option1=request.POST.get("option")
@@ -109,8 +110,7 @@ def Uploaded(request):
 		Answer=request.POST.get("Answer")
 		Catogaries=request.POST.get("Category")
 		Student=request.user
-
-		question=quiz(question=Question,option1=Option1,option2=Option2,option3=Option3,option4=Option4,answer=Answer,catogaries=Catogaries,student=Student)
+		question=Test(testId=testId,Quiz_cover='homepage3.jpg',question=Question,option1=Option1,option2=Option2,option3=Option3,option4=Option4,answer=Answer,catogaries=Catogaries,student=Student)
 		question.save()
 	messages.success(request,f'Question added successfully.')
 	return render(request,'blog/Questionupload.html')
