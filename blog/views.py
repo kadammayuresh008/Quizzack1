@@ -23,21 +23,12 @@ def catogaries(request):
 	x=list(y)
 	a=[]
 	for i in x:
-<<<<<<< HEAD
 		image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 		ans=list(image)
 		try:
 			a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 		except:
 			a.append([i['catogaries'],'homepage3.jpg',0,0])
-=======
-		image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
-		ans=list(image)
-		try:
-			a.append([i['catogaries'],ans[0]['Quiz_cover']])
-		except:
-			a.append([i['catogaries'],'homepage3.jpg'])
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 	z=[]
 	for i in a:
 		if(i not in z):
@@ -185,21 +176,12 @@ def incre_like(request):
 		x=list(y)
 		a=[]
 		for i in x:
-<<<<<<< HEAD
 			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 			ans=list(image)
 			try:
 				a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 			except:
 				a.append([i['catogaries'],'homepage3.jpg',0,0])
-=======
-			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
-			ans=list(image)
-			try:
-				a.append([i['catogaries'],ans[0]['Quiz_cover']])
-			except:
-				a.append([i['catogaries'],'homepage3.jpg'])
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 		z=[]
 		for i in a:
 			if(i not in z):
@@ -225,21 +207,12 @@ def decre_like(request):
 		x=list(y)
 		a=[]
 		for i in x:
-<<<<<<< HEAD
 			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 			ans=list(image)
 			try:
 				a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 			except:
 				a.append([i['catogaries'],'homepage3.jpg',0,0])
-=======
-			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
-			ans=list(image)
-			try:
-				a.append([i['catogaries'],ans[0]['Quiz_cover']])
-			except:
-				a.append([i['catogaries'],'homepage3.jpg'])
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 		z=[]
 		for i in a:
 			if(i not in z):
@@ -261,21 +234,12 @@ def sort(request):
 			x=list(y)
 			a=[]
 			for i in x:
-<<<<<<< HEAD
 				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 				ans=list(image)
 				try:
 					a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 				except:
 					a.append([i['catogaries'],'./media/homepage3.jpg',0,0])
-=======
-				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
-				ans=list(image)
-				try:
-					a.append([i['catogaries'],ans[0]['Quiz_cover']])
-				except:
-					a.append([i['catogaries'],'homepage3.jpg'])
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 			z=[]
 			for i in a:
 				if(i not in z):
@@ -292,32 +256,19 @@ def sort(request):
 			x=list(y)
 			a=[]
 			for i in x:
-<<<<<<< HEAD
 				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 				ans=list(image)
 				try:
 					a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 				except:
 					a.append([i['catogaries'],'homepage3.jpg',0,0])
-=======
-				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
-				ans=list(image)
-				try:
-					a.append([i['catogaries'],ans[0]['Quiz_cover']])
-				except:
-					a.append([i['catogaries'],'homepage3.jpg'])
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 			z=[]
 			for i in a:
 				if(i not in z):
 					z.append(i)
 				else:
 					continue
-<<<<<<< HEAD
 			z=sorted(z,key=lambda x:x[2],reverse=True)
-=======
-			# z=sorted(z,key=lambda x:x[2],reverse=True)
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 			context={
 			'topic':"Most Liked",
 			'quizs' :z,
@@ -328,32 +279,19 @@ def sort(request):
 			x=list(y)
 			a=[]
 			for i in x:
-<<<<<<< HEAD
 				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 				ans=list(image)
 				try:
 					a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 				except:
 					a.append([i['catogaries'],'homepage3.jpg',0,0])
-=======
-				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
-				ans=list(image)
-				try:
-					a.append([i['catogaries'],ans[0]['Quiz_cover']])
-				except:
-					a.append([i['catogaries'],'homepage3.jpg'])
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 			z=[]
 			for i in a:
 				if(i not in z):
 					z.append(i)
 				else:
 					continue
-<<<<<<< HEAD
 			z=sorted(z,key=lambda x:x[3],reverse=True)
-=======
-			# z=sorted(z,key=lambda x:x[3],reverse=True)
->>>>>>> 2af22edb7e8515bdc62f4d26b1ce433165b949b4
 			context={
 			'topic':"Most Disliked",
 			'quizs' :z,
