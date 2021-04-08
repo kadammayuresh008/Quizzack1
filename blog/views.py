@@ -239,7 +239,7 @@ def sort(request):
 				try:
 					a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 				except:
-					a.append([i['catogaries'],'homepage3.jpg',0,0])
+					a.append([i['catogaries'],'./media/homepage3.jpg',0,0])
 			z=[]
 			for i in a:
 				if(i not in z):
