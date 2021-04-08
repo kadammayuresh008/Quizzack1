@@ -42,7 +42,6 @@
         <table class="table">
             <thead class="thead bg-info text-light">
               <tr>
-                <th scope="col">Attempt no.</th>
                 <th scope="col">Quiz Name</th>
                 <th scope="col">Total question</th>
                 <th scope="col">Attempted</th>
@@ -55,7 +54,6 @@
                 {% for i in attempts%}
                 {% if i.accuracy >= 50.0 %}
                 <tr style="background-color: rgb(216, 239, 245)">
-                    <th scope="row">{{i.attemptId}}</th>
                     <td>{{i.q_name}}</td>
                     <td>{{i.totalQue}}</td>
                     <td>{{i.attemptedQue}}</td>
@@ -65,7 +63,6 @@
                   </tr>
                   {% else %}
                   <tr style="background-color: rgb(216, 239, 245)">
-                    <th scope="row">{{i.attemptId}}</th>
                     <td>{{i.q_name}}</td>
                     <td>{{i.totalQue}}</td>
                     <td>{{i.attemptedQue}}</td>
