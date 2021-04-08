@@ -23,12 +23,12 @@ def catogaries(request):
 	x=list(y)
 	a=[]
 	for i in x:
-		image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
+		image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
 		ans=list(image)
 		try:
-			a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
+			a.append([i['catogaries'],ans[0]['Quiz_cover']])
 		except:
-			a.append([i['catogaries'],'homepage3.jpg',0,0])
+			a.append([i['catogaries'],'homepage3.jpg'])
 	z=[]
 	for i in a:
 		if(i not in z):
@@ -176,12 +176,12 @@ def incre_like(request):
 		x=list(y)
 		a=[]
 		for i in x:
-			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
+			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 			ans=list(image)
 			try:
-				a.append([i['catogaries'],ans[0]['Quiz_cover']])
+				a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 			except:
-				a.append([i['catogaries'],'homepage3.jpg'])
+				a.append([i['catogaries'],'homepage3.jpg',0,0])
 		z=[]
 		for i in a:
 			if(i not in z):
