@@ -23,12 +23,12 @@ def catogaries(request):
 	x=list(y)
 	a=[]
 	for i in x:
-		image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover')
+		image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
 		ans=list(image)
 		try:
-			a.append([i['catogaries'],ans[0]['Quiz_cover']])
+			a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
 		except:
-			a.append([i['catogaries'],'homepage3.jpg'])
+			a.append([i['catogaries'],'homepage3.jpg',0,0])
 	z=[]
 	for i in a:
 		if(i not in z):
@@ -36,6 +36,7 @@ def catogaries(request):
 		else:
 			continue
 	context={
+	'topic':"Recently Added",
 	'quizs' :z,
 	}
 	return render(request,'blog/quiz_catlog.html',context)
@@ -59,7 +60,6 @@ def quiz_page_result(request):
 	if request.method=='POST':
 		data=request.POST
 		datas= dict(data)
-		print(datas)
 		qid=[]
 		qans=[]
 		ans=[]
@@ -82,6 +82,7 @@ def quiz_page_result(request):
 					score += 1
 			eff = (score/total)*100
 	context = {
+	'name':datas['category'][0],
 	'totalq':datas['length'][0],
 	'score':score,
 	'total':total,
@@ -161,3 +162,141 @@ def add_cover_photo(request):
 	messages.success(request,"Quiz submitted Successfully.")
 	quizList=[]
 	return render(request,'blog/quiz_upload_cat.html')
+
+
+def incre_like(request):
+	if(request.method=="POST"):
+		name=request.POST.get("like")
+		list1=quiz.objects.filter(catogaries=name)
+		for i in list1:
+			i.like+=1
+			i.save()
+		messages.success(request,"You liked the "+name+" Quiz.")
+		y= quiz.objects.all().values('catogaries')
+		x=list(y)
+		a=[]
+		for i in x:
+			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
+			ans=list(image)
+			try:
+				a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
+			except:
+				a.append([i['catogaries'],'homepage3.jpg',0,0])
+		z=[]
+		for i in a:
+			if(i not in z):
+				z.append(i)
+			else:
+				continue
+		context={
+		'topic':"Recently Added",
+		'quizs' :z,
+		}
+		return render(request,'blog/quiz_catlog.html',context)
+
+
+def decre_like(request):
+	if(request.method=="POST"):
+		name=request.POST.get("like")
+		list1=quiz.objects.filter(catogaries=name)
+		for i in list1:
+			i.dislike+=1
+			i.save()
+		messages.error(request,"You disliked the "+name+" Quiz.")
+		y= quiz.objects.all().values('catogaries')
+		x=list(y)
+		a=[]
+		for i in x:
+			image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
+			ans=list(image)
+			try:
+				a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
+			except:
+				a.append([i['catogaries'],'homepage3.jpg',0,0])
+		z=[]
+		for i in a:
+			if(i not in z):
+				z.append(i)
+			else:
+				continue
+		context={
+		'topic':"Recently Added",
+		'quizs' :z,
+		}
+		return render(request,'blog/quiz_catlog.html',context)
+
+
+def sort(request):
+	if(request.method=="POST"):
+		order=request.POST.get("sort")
+		if(order=="Recently added"):
+			y=quiz.objects.all().values('catogaries')
+			x=list(y)
+			a=[]
+			for i in x:
+				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
+				ans=list(image)
+				try:
+					a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
+				except:
+					a.append([i['catogaries'],'homepage3.jpg',0,0])
+			z=[]
+			for i in a:
+				if(i not in z):
+					z.append(i)
+				else:
+					continue
+			context={
+			'topic':"Recently Added",
+			'quizs' :z,
+			}
+			return render(request,'blog/quiz_catlog.html',context)
+		elif(order=="Most Liked"):
+			y= quiz.objects.all().values('catogaries')
+			x=list(y)
+			a=[]
+			for i in x:
+				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
+				ans=list(image)
+				try:
+					a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
+				except:
+					a.append([i['catogaries'],'homepage3.jpg',0,0])
+			z=[]
+			for i in a:
+				if(i not in z):
+					z.append(i)
+				else:
+					continue
+			z=sorted(z,key=lambda x:x[2],reverse=True)
+			context={
+			'topic':"Most Liked",
+			'quizs' :z,
+			}
+			return render(request,'blog/quiz_catlog.html',context)
+		elif(order=="Most disliked"):
+			y= quiz.objects.all().values('catogaries')
+			x=list(y)
+			a=[]
+			for i in x:
+				image= Test.objects.filter(catogaries=i['catogaries']).values('Quiz_cover','like','dislike')
+				ans=list(image)
+				try:
+					a.append([i['catogaries'],ans[0]['Quiz_cover'],ans[0]['like'],ans[0]['dislike']])
+				except:
+					a.append([i['catogaries'],'homepage3.jpg',0,0])
+			z=[]
+			for i in a:
+				if(i not in z):
+					z.append(i)
+				else:
+					continue
+			z=sorted(z,key=lambda x:x[3],reverse=True)
+			context={
+			'topic':"Most Disliked",
+			'quizs' :z,
+			}
+			return render(request,'blog/quiz_catlog.html',context)
+		else:
+			print("Enter valid choice")
+		return render(request,'blog/quiz_catlog.html')

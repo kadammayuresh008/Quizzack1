@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="{% static 'blog/main2.css' %}">
     <link rel="shortcut icon" href="../media/Qimage.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			{%if title%}
 				<title>Quizzack-{{title}}</title>
 			{%else%}
@@ -28,6 +29,25 @@
   color: black;
   padding-top:20px;
   }
+
+  
+#like{
+  color:green;
+  font-size:30px
+}
+
+#dislike{
+  color:red;
+  font-size:30px
+}
+
+#like:hover{
+  color:black;
+}
+
+#dislike:hover{
+  color:black;
+}
   </style>
   <body>
     <script>
@@ -47,6 +67,9 @@
   // *******************************Timer Function***********************//
   
 // Set the date we're counting down to
+function sort(){
+  console.log("sort");
+}
 
 function Set(){
 let question=document.getElementById("demo1").value;
@@ -95,6 +118,21 @@ var x = setInterval(function() {
     document.quiz_form.submit();
   }
 }, 1000);
+
+
+function like(name)
+{
+  console.log(name);
+  console.log("liked");
+  document.like_form.submit();
+}
+function dislike(name)
+{
+  console.log(name);
+  console.log("disliked");
+  document.dislike_form.submit();
+}
+
     </script>
     <nav class="navbar navbar-expand-sm navbar-dark bg-info sticky-top">
       <div>

@@ -9,6 +9,7 @@
   <div>
     <h1 class="bg-info" style="color: white;padding:10px;border-radius:5px;"><b>Scorecard</b></h1>
     <br>
+    <p>Quiz Name : {{name}}</p>
     <p>Total number of question : {{totalq}}</p>
     <p>
       Total number of question answered : {{total}}</p>
@@ -23,6 +24,26 @@
     >
       Your Efficiency is: {{ eff }} %
     </p>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-3">
+      <p>Review Quiz:</p>
+    </div>
+    <div class="col-sm-1">
+      <form name="like_form" action="../like" method="POST" >
+        {% csrf_token %}
+        <input type="hidden" id="like" name="like" value="{{name}}">
+      <i class="fa fa-thumbs-up" id ="like" onclick="like('{{name}}')"></i>
+    </form>
+    </div>
+    <div class="col-sm-1">
+      <form name="dislike_form" action="../dislike" method="POST" >
+        {% csrf_token %}
+        <input type="hidden" id="like" name="like" value="{{name}}">
+    <i class="fa fa-thumbs-down" id="dislike" onclick="dislike('{{name}}')"></i>
+    </form>
+  </div>
+</div>
   </div>
 </div>
 <br>

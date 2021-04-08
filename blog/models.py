@@ -13,10 +13,12 @@ class quiz(models.Model):
 	answer = models.CharField(max_length=500, default="")
 	catogaries = models.CharField(max_length=500,default="")
 	hint = models.CharField(max_length=500, default="")
+	like=models.IntegerField(default=0)
+	dislike=models.IntegerField(default=0)
 	student = models.ForeignKey(User,on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.catogaries
+		return str(self.catogaries)
 
 
 class Attempts(models.Model):
