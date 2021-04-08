@@ -1,0 +1,43 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-10"><h2>{{topic}}</h2></div>
+  <div class="col-sm-2" style="padding-top: 10px;">
+    <form action="../sort" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <select id="inputState" class="form-control" name="sort" onchange="this.form.submit()">
+          <option selected>Recently added</option>
+          <option>Most Liked</option>
+          <option>Most disliked</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row" style="text-align:center;">
+  {% for que in quizs %}
+    <div style="padding:2px;">
+    <a  href="{% url 'blog.quiz_page' que.0 %}" style="text-decoration:None;color: black;">
+      <div class="card" style="width: 18rem;height:15rem;margin:10px">
+        <img class="card-img-top" style="width:285px;height:9rem;" src="/media/{{que.1}}" alt="Card image cap">
+        <div class="card-body rounded" style="background-color: rgb(216, 239, 245)">
+          <div class="row">
+            <div class="col-sm-7">
+          <h5 class="card-title">{{que.0|capfirst}}</h5>
+        </div>
+        <div class="col-sm-3">
+          <i class="fa fa-thumbs-up" style="color:green;font-size:20px">{{que.2}}</i>
+        </div>
+        <div class="col-sm-2">
+        <i class="fa fa-thumbs-down" style="color:red;font-size:20px">{{que.3}}</i>
+      </div>
+        </div>
+        </div>
+        </div>
+      </a>
+    </div>
+     {% endfor %}
+</div>
+<div class="py-5"></div>
+{% endblock content %}

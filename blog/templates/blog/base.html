@@ -1,0 +1,201 @@
+	{% load static %}
+  <!DOCTYPE html>
+	<html>
+	<head>
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{% static 'blog/main2.css' %}">
+    <link rel="shortcut icon" href="../media/Qimage.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			{%if title%}
+				<title>Quizzack-{{title}}</title>
+			{%else%}
+				<title>Quizzack</title>
+			{% endif %}
+	</head>
+  <style>
+    #demo{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0px;
+  }
+  #circular{
+  height:40x;
+  width:40px;
+  color: black;
+  padding-top:20px;
+  }
+
+  
+#like{
+  color:green;
+  font-size:30px
+}
+
+#dislike{
+  color:red;
+  font-size:30px
+}
+
+#like:hover{
+  color:black;
+}
+
+#dislike:hover{
+  color:black;
+}
+  </style>
+  <body>
+    <script>
+      var countDownDate=0;
+      var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.style.height="250px"
+    output.style.width="300px"
+    output.style.border="thin solid black"
+    output.style.borderRadius="1em"
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+
+  // *******************************Timer Function***********************//
+  
+// Set the date we're counting down to
+function sort(){
+  console.log("sort");
+}
+
+function Set(){
+let question=document.getElementById("demo1").value;
+var  testtime=question*60*1000;
+var presentTime=new  Date().getTime()
+window.countDownDate = new Date().getTime()+testtime;
+console.log(countDownDate);
+return countDownDate;
+};
+// Update the count down every 1 second
+var count=0
+var x = setInterval(function() {
+  // Get today's date and time
+  if(count==0){
+    countDownDate=Set();
+    count=1;
+  }
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  if(hours == 0)
+  {
+  document.getElementById("demo").innerHTML =
+  minutes + "m " + seconds + "s ";
+  }
+  else if(minutes == 0 && hours==0){
+  document.getElementById("demo").innerHTML = seconds + "s ";
+  }
+  else{
+   document.getElementById("demo").innerHTML = hours+"h " 
+  + minutes + "m " + seconds + "s ";
+  }
+    
+  // If the count down is over, write some text 
+  if (distance <= 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Time ended";
+    document.quiz_form.submit();
+  }
+}, 1000);
+
+
+function like(name)
+{
+  console.log(name);
+  console.log("liked");
+  document.like_form.submit();
+}
+function dislike(name)
+{
+  console.log(name);
+  console.log("disliked");
+  document.dislike_form.submit();
+}
+
+    </script>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-info sticky-top">
+      <div>
+      <h3><a class="navbar-nav nav-link text-light" style="font-family:Dancing Script" href="{% url 'blog.home'%}">Quizzack<span class="sr-only">(current)</span></a></h3>
+    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          {% if user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'blog.quiz_catlog'%}">Quiz</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'blog.questionUpload'%}">Add question</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'blog.quiz_upload_cat'%}">Add quiz</a>
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+        {% if user.is_authenticated %}
+        <li class="nav-item active">
+          <a href="{% url 'profile' %}" class="nav-link" rel="stylesheet">Profile</a>
+        </li>
+          <li class="nav-item active">
+          <a href="{% url 'logout' %}" class="nav-link" rel="stylesheet">LogOut</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a href="{% url 'login' %}" class="nav-link" rel="stylesheet">LogIn </a>
+        </li>
+          <li class="nav-item active">
+          <a href="{% url 'register'%}"  class="nav-link" rel="stylesheet">Register</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    </nav>
+	<div class="col-sm-12">
+    {% if messages %}
+    {% for message in messages%}
+    <div class="alert alert-{{message.tags}}">
+      {{ message }}
+    </div>
+    {% endfor%}
+    {% endif %}
+		{% block content %}
+		{% endblock %}
+  </div>
+  <div class="py-3"></div>
+  <div class="col-sm-12" style="bottom:0;">
+    <footer class="bg-info row" style="justify-content: space-evenly;">
+      <p  style="color:white;"> Copyright © 2020-21 Quizzack, Inc </p>
+      <!-- <p  style="color:white;"> Email : quizzyteam@gmail.com </p>
+      <p style="color:white;"> Telephone No : 2522621715</p> -->
+      <p  style="color:white;"> Developed by Mayuresh Kadam </p>
+      </footer>
+  </div>
+  </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</html>
